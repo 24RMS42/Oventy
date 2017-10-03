@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{EA2CACC1-F2D3-4226-80F3-4587A431CAB2}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>oventy</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)oventyPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\WebviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)oventyPage.xaml.cs">
+      <DependentUpon>oventyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Client\IApiEndpointsFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Client\ClientRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\IRestService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Client\ClientResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\ErrorType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Client\ApiEndpoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataSource\IAccountDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataSource\Common\AccountDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\IDataStorageService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants\ClientConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\UserLogin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Service\Common\RestService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exception\BusinessException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\HttpClientExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TaskExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ErrorResponse.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Service\HttpHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\WebviewPage.xaml.cs">
+      <DependentUpon>WebviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Custom\CustomWebview.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Client\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Service\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Enums\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DataSource\" />
+    <Folder Include="$(MSBuildThisFileDirectory)DataSource\Common\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Constants\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Extensions\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Service\Common\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Exception\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Custom\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+  </ItemGroup>
+</Project>
