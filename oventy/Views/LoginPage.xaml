@@ -55,6 +55,8 @@
                     Text="Login"
                     Clicked="OnLoginButtonClicked"
                     Style="{StaticResource MainButtonStyle}"/>
+
+				<WebView VerticalOptions="FillAndExpand" x:Name="webview" Source = "https://www.oventy.com/login" />
             </StackLayout>
         </Grid>
     </Grid>

@@ -10,6 +10,11 @@ namespace oventy
         public LoginPage()
         {
             InitializeComponent();
+
+            webview.Navigated += (o, s) => {
+                Console.WriteLine("login webview loaded");
+                loginButton.IsEnabled = true;
+            };
         }
 
         async void OnLoginButtonClicked(object sender, EventArgs args)
@@ -26,6 +31,12 @@ namespace oventy
 
                 if (result)
                 {
+                    var jsAccessTokenString = $"localStorage.setItem('ls.accessToken', '{Settings.AccessToken}')";
+                    var jsRefreshTokenString = $"localStorage.setItem('ls.refreshToken', '{Settings.RefreshToken}')";
+
+                    webview.Eval(jsAccessTokenString);
+                    webview.Eval(jsRefreshTokenString);
+
                     await Navigation.PushAsync(new WebviewPage());
                 }
             }
