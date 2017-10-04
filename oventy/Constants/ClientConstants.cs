@@ -15,5 +15,8 @@ namespace oventy
 
         public const string Email = "email";
         public const string Password = "password";
+
+        public const string ConnectionString = "Endpoint=sb://xtestnotihubns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=WVbUvXvo9lMIyzIxNjyUoMlwcZHtkosdRU2RcoHgaG8=";
+        public const string NotificationHubPath = "xtestnotihub";
     }
 }
