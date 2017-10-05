@@ -18,5 +18,6 @@ namespace oventy
 
         public const string ConnectionString = "Endpoint=sb://xtestnotihubns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=WVbUvXvo9lMIyzIxNjyUoMlwcZHtkosdRU2RcoHgaG8=";
         public const string NotificationHubPath = "xtestnotihub";
+        public const string GoogleSenderId ="902361147448";
     }
 }
