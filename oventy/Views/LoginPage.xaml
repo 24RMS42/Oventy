@@ -26,7 +26,6 @@
                     <Entry
                         Placeholder="Email"
                         x:Name="EmailEntry"
-						Text="mikolaj@james.oventy.com"
                         Keyboard="Email"
                         TextColor="Black"/>
                 </StackLayout>
@@ -39,7 +38,6 @@
                         TextColor="Black"
                         Placeholder="Password"
                         IsPassword="true"
-						Text="mikolaj"
                         x:Name="PasswordEntry"/>
                 </StackLayout>
 
