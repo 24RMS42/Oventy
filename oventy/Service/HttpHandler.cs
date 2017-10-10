@@ -76,7 +76,7 @@ namespace oventy
         {
             try
             {
-                _httpClient.BaseAddress = new Uri(ClientConstants.ApiUrl);
+                //_httpClient.BaseAddress = new Uri(ClientConstants.ApiUrl);
                 _httpClient.DefaultRequestHeaders.Clear();
                 _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Settings.AccessToken);

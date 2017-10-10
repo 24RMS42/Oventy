@@ -10,7 +10,8 @@
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Double" 
                             Android="50" 
-                            iOS="35" />
+                            iOS="35"
+                            WinPhone="40"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="WidthRequest" Value="50" />
