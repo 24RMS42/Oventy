@@ -25,6 +25,7 @@ namespace oventy.UWP
         public MainPage()
         {
             this.InitializeComponent();
+            oventy.App.DeviceType = ClientConstants.Platform_WinPhone;
             LoadApplication(new oventy.App());
         }
     }
