@@ -26,6 +26,8 @@ namespace oventy.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
+            App.DeviceType = ClientConstants.Platform_Android;
+
             LoadApplication(new App());
 
             RegisterWithGCM();

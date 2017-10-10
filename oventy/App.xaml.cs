@@ -4,6 +4,8 @@ namespace oventy
 {
     public partial class App : Application
     {
+        public static string DeviceType = "";
+
         public App()
         {
             InitializeComponent();

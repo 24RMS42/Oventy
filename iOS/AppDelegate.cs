@@ -27,6 +27,8 @@ namespace oventy.iOS
 
             global::Xamarin.Forms.Forms.Init();
 
+            App.DeviceType = ClientConstants.Platform_iOS;
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
@@ -34,22 +36,28 @@ namespace oventy.iOS
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            Hub = new SBNotificationHub(ClientConstants.ConnectionString, ClientConstants.NotificationHubPath);
+            Console.WriteLine("nsdata device token:" + deviceToken);
+            Settings.DeviceToken = deviceToken.Description.Trim('<', '>').Replace(" ", "");
+            //Hub = new SBNotificationHub(ClientConstants.ConnectionString, ClientConstants.NotificationHubPath);
 
-            Hub.UnregisterAllAsync (deviceToken, (error) => {
-                     if (error != null)
-                     {
-                         Console.WriteLine("Error calling Unregister: {0}", error.ToString());
-                         return;
-                     }
+            //Hub.UnregisterAllAsync (deviceToken, (error) => {
+            //     if (error != null)
+            //     {
+            //         Console.WriteLine("Error calling Unregister: {0}", error.ToString());
+            //         return;
+            //     }
 
-                     NSSet tags = null; // create tags if you want
-                     Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
-                     Console.WriteLine("register success:" + errorCallback);
-                     if (errorCallback != null)
-                         Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
-                     });
-            });
+            //     NSSet tags = null; // create tags if you want
+            //     Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
+            //         Console.WriteLine("register success:" + errorCallback);
+            //         if (errorCallback != null)
+            //             Console.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+            //         else
+            //         {
+            //             Settings.DeviceToken = deviceToken.Description.Trim('<', '>').Replace(" ", "");
+            //         }
+            //     });
+            //});
         }
 
         public override void ReceivedRemoteNotification(UIApplication app, NSDictionary userInfo)
@@ -68,13 +76,6 @@ namespace oventy.iOS
 
         		string alert = string.Empty;
 
-        		//Extract the alert text
-        		// NOTE: If you're using the simple alert by just specifying
-        		// "  aps:{alert:"alert msg here"}  ", this will work fine.
-        		// But if you're using a complex alert with Localization keys, etc.,
-        		// your "alert" object from the aps dictionary will be another NSDictionary.
-        		// Basically the JSON gets dumped right into a NSDictionary,
-        		// so keep that in mind.
         		if (aps.ContainsKey(new NSString("alert")))
         			alert = (aps[new NSString("alert")] as NSString).ToString();
 

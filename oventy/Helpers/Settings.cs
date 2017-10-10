@@ -33,9 +33,11 @@ namespace oventy
         private const string AccessTokenExpireTimeKey = "access_toke_expire_time_key";
         private static readonly DateTime AccessTokenExpireTimeDefault = DateTime.UtcNow;
 
-        private const string GCMTokenKey = "gcm_token";
-        private static readonly string GCMTokenDefault = string.Empty;
-        
+        private const string DeviceTokenKey = "device_token";
+        private static readonly string DeviceTokenDefault = string.Empty;
+
+        public const string RegistratrionIdKey = "RegistratrionIdKey";
+
         #endregion
 
 
@@ -75,10 +77,16 @@ namespace oventy
             set { AppSettings.AddOrUpdateValue(AccessTokenExpireTimeKey, value); }
         }
 
-        public static string GcmToken
+        public static string DeviceToken
         {
-            get { return AppSettings.GetValueOrDefault(GCMTokenKey, GCMTokenDefault); }
-            set { AppSettings.AddOrUpdateValue(GCMTokenKey, value); }
+            get { return AppSettings.GetValueOrDefault(DeviceTokenKey, DeviceTokenDefault); }
+            set { AppSettings.AddOrUpdateValue(DeviceTokenKey, value); }
+        }
+
+        public static string RegistratrionId
+        {
+            get { return AppSettings.GetValueOrDefault(RegistratrionIdKey, Guid.NewGuid().ToString()); }
+            set { AppSettings.AddOrUpdateValue(RegistratrionIdKey, value); }
         }
 
         public static void RemoveUsername()
@@ -94,6 +102,11 @@ namespace oventy
         public static void RemoveAccessToken()
         {
             AppSettings.Remove(AccessTokenKey);
+        }
+
+        public static void RemoveRefreshToken()
+        {
+            AppSettings.Remove(RefreshTokenKey);
         }
 
         public static void RemoveAccessTokenExpireTime()

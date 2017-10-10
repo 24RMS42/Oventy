@@ -48,5 +48,7 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Oventy use photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Oventy use camera</string>
 </dict>
 </plist>

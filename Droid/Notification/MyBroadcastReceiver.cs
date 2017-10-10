@@ -52,7 +52,8 @@ namespace GetStartedXamarinAndroid
 		protected override void OnRegistered(Context context, string registrationId)
 		{
 			Log.Verbose(MyBroadcastReceiver.TAG, "GCM Registered: " + registrationId);
-			RegistrationID = registrationId;
+            Settings.DeviceToken = registrationId;
+			/*RegistrationID = registrationId;
             _context = context;
 
 			//createNotification("PushHandlerService-GCM Registered...", "The device has been Registered!");
@@ -73,11 +74,12 @@ namespace GetStartedXamarinAndroid
 			try
 			{
 				var hubRegistration = Hub.Register(registrationId, tags.ToArray());
+                Settings.DeviceToken = registrationId;
 			}
 			catch (Exception ex)
 			{
 				Log.Error(MyBroadcastReceiver.TAG, ex.Message);
-			}
+			}*/
 		}
 
 		protected override void OnMessage(Context context, Intent intent)

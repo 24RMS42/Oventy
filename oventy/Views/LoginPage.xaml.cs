@@ -10,6 +10,7 @@ namespace oventy
         public LoginPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
 
             webview.Navigated += (o, s) => {
                 Console.WriteLine("login webview loaded");
@@ -27,17 +28,21 @@ namespace oventy
             if (CheckValidate())
             {
                 var httpHandler = new HttpHandler();
-                var result = await httpHandler.LoginAsync(useremail, userpassword);
+                var login_result = await httpHandler.LoginAsync(useremail, userpassword);
 
-                if (result)
+                if (login_result)
                 {
-                    var jsAccessTokenString = $"localStorage.setItem('ls.accessToken', '{Settings.AccessToken}')";
-                    var jsRefreshTokenString = $"localStorage.setItem('ls.refreshToken', '{Settings.RefreshToken}')";
+                    var register_device_result = await httpHandler.InstallDeviceAsync();
+                    if (register_device_result)
+                    {
+                        var jsAccessTokenString = $"localStorage.setItem('ls.accessToken', '{Settings.AccessToken}')";
+                        var jsRefreshTokenString = $"localStorage.setItem('ls.refreshToken', '{Settings.RefreshToken}')";
 
-                    webview.Eval(jsAccessTokenString);
-                    webview.Eval(jsRefreshTokenString);
+                        webview.Eval(jsAccessTokenString);
+                        webview.Eval(jsRefreshTokenString);
 
-                    await Navigation.PushAsync(new WebviewPage());
+                        await Navigation.PushAsync(new WebviewPage());
+                    }
                 }
             }
         }
