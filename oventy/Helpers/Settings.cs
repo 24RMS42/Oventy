@@ -36,7 +36,8 @@ namespace oventy
         private const string DeviceTokenKey = "device_token";
         private static readonly string DeviceTokenDefault = string.Empty;
 
-        public const string RegistratrionIdKey = "RegistratrionIdKey";
+        private const string InstallationIdKey = "InstallationIdKey";
+        private static readonly string InstallationIdDefault = string.Empty;
 
         #endregion
 
@@ -83,10 +84,10 @@ namespace oventy
             set { AppSettings.AddOrUpdateValue(DeviceTokenKey, value); }
         }
 
-        public static string RegistratrionId
+        public static string InstallationId
         {
-            get { return AppSettings.GetValueOrDefault(RegistratrionIdKey, Guid.NewGuid().ToString()); }
-            set { AppSettings.AddOrUpdateValue(RegistratrionIdKey, value); }
+            get { return AppSettings.GetValueOrDefault(InstallationIdKey, InstallationIdDefault); }
+            set { AppSettings.AddOrUpdateValue(InstallationIdKey, value); }
         }
 
         public static void RemoveUsername()

@@ -17,6 +17,8 @@ namespace oventy
         public HttpHandler()
         {
             _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri(ClientConstants.ApiUrl);
+            _httpClient.DefaultRequestHeaders.Clear();
         }
 
         #region LoginAsync
@@ -25,8 +27,6 @@ namespace oventy
             try
             {
                 UserDialogs.Instance.ShowLoading("Logging in...");
-                _httpClient.BaseAddress = new Uri(ClientConstants.ApiUrl);
-                _httpClient.DefaultRequestHeaders.Clear();
                 _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var request = new HttpRequestMessage(HttpMethod.Post, ClientConstants.AccessToken);
@@ -39,7 +39,6 @@ namespace oventy
                                                     "application/json");
 
                 var response = await _httpClient.SendAsync(request);
-                //UserDialogs.Instance.HideLoading();
 
                 var result = response.Content.ReadAsStringAsync().Result;
                 Console.WriteLine("login result:" + result);
@@ -56,6 +55,7 @@ namespace oventy
                 }
                 else
                 {
+                    UserDialogs.Instance.HideLoading();
                     var jsonArray = JToken.Parse(result);
                     var message = jsonArray["Message"].ToString();
                     ParseError(message);
@@ -64,6 +64,7 @@ namespace oventy
             }
             catch (Exception ex)
             {
+                UserDialogs.Instance.HideLoading();
                 Debug.WriteLine(ex.ToString());
                 ParseError();
                 return false;
@@ -76,8 +77,6 @@ namespace oventy
         {
             try
             {
-                //_httpClient.BaseAddress = new Uri(ClientConstants.ApiUrl);
-                _httpClient.DefaultRequestHeaders.Clear();
                 _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Settings.AccessToken);
                 _httpClient.DefaultRequestHeaders.Add("X-AccountOnlyAction", "true");
@@ -87,7 +86,8 @@ namespace oventy
                 var oJsonObject = new JObject();
                 oJsonObject.Add("PushChannel", Settings.DeviceToken);
                 oJsonObject.Add("Platform", App.DeviceType);
-                oJsonObject.Add("InstallationId", Guid.NewGuid().ToString());
+                oJsonObject.Add("InstallationId", Settings.InstallationId);
+
                 request.Content = new StringContent(oJsonObject.ToString(),
                                                     Encoding.UTF8,
                                                     "application/json");

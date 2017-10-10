@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace oventy
 {
@@ -9,6 +10,11 @@ namespace oventy
         public App()
         {
             InitializeComponent();
+
+            if (string.IsNullOrEmpty(Settings.InstallationId))
+            {
+                Settings.InstallationId = Guid.NewGuid().ToString();
+            }
 
             MainPage = new NavigationPage(new LoginPage());
         }
