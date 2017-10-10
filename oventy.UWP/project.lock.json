@@ -277,6 +277,9 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
+        "type": "package"
+      },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
         "dependencies": {
@@ -2708,6 +2711,9 @@
         }
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
+        "type": "package"
+      },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
         "type": "package"
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -5225,6 +5231,9 @@
         }
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
+        "type": "package"
+      },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
         "type": "package"
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -7784,6 +7793,9 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
+        "type": "package"
+      },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
         "dependencies": {
@@ -10308,6 +10320,9 @@
         }
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
+        "type": "package"
+      },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
         "type": "package"
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -12873,6 +12888,9 @@
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
         "type": "package"
       },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
+        "type": "package"
+      },
       "Microsoft.VisualBasic/10.0.1": {
         "type": "package",
         "dependencies": {
@@ -15397,6 +15415,9 @@
         }
       },
       "Microsoft.NETCore.Windows.ApiSets/1.0.1": {
+        "type": "package"
+      },
+      "Microsoft.Services.Store.Engagement/10.1706.16001": {
         "type": "package"
       },
       "Microsoft.VisualBasic/10.0.1": {
@@ -18033,6 +18054,24 @@
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.json"
+      ]
+    },
+    "Microsoft.Services.Store.Engagement/10.1706.16001": {
+      "sha512": "6+LT77b4SGj5dq3jEsFZGBt8A7iaU9qwHxknXq40aFrLKlqoMh9a8emO3sxdtY8CYorR0VUQlJfAHaUGvJ1Tig==",
+      "type": "package",
+      "files": [
+        "Microsoft.Services.Store.Engagement.10.1706.16001.nupkg.sha512",
+        "Microsoft.Services.Store.Engagement.nuspec",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/Appx/ARM/Microsoft.Services.Store.Engagement.ARM.10.0.appx",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/Appx/x64/Microsoft.Services.Store.Engagement.x64.10.0.appx",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/Appx/x86/Microsoft.Services.Store.Engagement.x86.10.0.appx",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/Extension.vsixmanifest",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/License.rtf",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/Redist.txt",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/References/CommonConfiguration/neutral/Microsoft.Services.Store.Engagement.winmd",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/References/CommonConfiguration/neutral/en/Microsoft.Services.Store.Engagement.xml",
+        "SDK/Windows Kits/10/ExtensionSDKs/Microsoft.Services.Store.Engagement/10.0/SDKManifest.xml",
+        "build/Microsoft.Services.Store.Engagement.targets"
       ]
     },
     "Microsoft.VisualBasic/10.0.1": {
@@ -24708,6 +24747,7 @@
     "": [
       "Acr.UserDialogs >= 6.5.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.3",
+      "Microsoft.Services.Store.Engagement >= 10.1706.16001",
       "Newtonsoft.Json >= 10.0.3",
       "Xam.Plugins.Settings >= 3.0.1",
       "Xamarin.Forms >= 2.3.4.224",

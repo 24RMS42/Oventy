@@ -5,7 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Networking.PushNotifications;
-//using Microsoft.Services.Store.Engagement;
+using Microsoft.Services.Store.Engagement;
 
 namespace oventy.UWP
 {
@@ -37,7 +37,7 @@ namespace oventy.UWP
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
-            InitNotificationsAsync();
+            RegisterEngagementNotification();
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -98,11 +98,13 @@ namespace oventy.UWP
             deferral.Complete();
         }
 
-        /*private async void RegisterEngagementNotification()
+        private async void RegisterEngagementNotification()
         {
             StoreServicesEngagementManager engagementManager = StoreServicesEngagementManager.GetDefault();
             await engagementManager.RegisterNotificationChannelAsync();
-        }*/
+
+            InitNotificationsAsync();
+        }
 
         private async void InitNotificationsAsync()
         {
@@ -111,7 +113,22 @@ namespace oventy.UWP
             //var hub = new NotificationHub(ClientConstants.NotificationHubPath, ClientConstants.ConnectionString);
             //var result = await hub.RegisterNativeAsync(channel.Uri);
 
-            Settings.DeviceToken = channel.ToString();
+            Settings.DeviceToken = channel.Uri;
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+
+            if (args is ToastNotificationActivatedEventArgs)
+            {
+                var toastActivationArgs = args as ToastNotificationActivatedEventArgs;
+
+                StoreServicesEngagementManager engagementManager = StoreServicesEngagementManager.GetDefault();
+                string originalArgs = engagementManager.ParseArgumentsAndTrackAppLaunch(
+                    toastActivationArgs.Argument);
+
+            }
         }
     }
 }

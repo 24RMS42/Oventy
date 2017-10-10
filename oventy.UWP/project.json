@@ -2,6 +2,7 @@
   "dependencies": {
     "Acr.UserDialogs": "6.5.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
+    "Microsoft.Services.Store.Engagement": "10.1706.16001",
     "modernhttpclient": "2.4.2",
     "Newtonsoft.Json": "10.0.3",
     "Xam.Plugins.Settings": "3.0.1",
