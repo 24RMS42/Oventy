@@ -7,11 +7,12 @@
         VerticalOptions="FillAndExpand" >
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="80*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="60*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" >
+        <Grid Grid.Row="0" Margin="0, 20, 0, 20">
+			<Image Source="logo.png" />
         </Grid>
         <!---FIELDS CONTAINER-->
         <Grid 
@@ -54,7 +55,7 @@
                     Clicked="OnLoginButtonClicked"
                     Style="{StaticResource MainButtonStyle}"/>
 
-				<WebView VerticalOptions="FillAndExpand" x:Name="webview" Source = "https://www.oventy.com/login" />
+				<WebView VerticalOptions="FillAndExpand" x:Name="webview" IsVisible="false" Source = "https://www.oventy.com/login" />
             </StackLayout>
         </Grid>
     </Grid>

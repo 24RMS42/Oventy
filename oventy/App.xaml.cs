@@ -16,6 +16,7 @@ namespace oventy
                 Settings.InstallationId = Guid.NewGuid().ToString();
             }
 
+            Xamarin.Forms.PlatformConfiguration.AndroidSpecific.Application.SetWindowSoftInputModeAdjust(this, Xamarin.Forms.PlatformConfiguration.AndroidSpecific.WindowSoftInputModeAdjust.Resize);
             MainPage = new NavigationPage(new LoginPage());
         }
 

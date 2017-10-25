@@ -20,11 +20,11 @@
          colorControlHighlight and colorSwitchThumbNormal. -->
         <item name="windowActionModeOverlay">true</item>
         <!--<item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>-->
-      <item name="android:windowFullscreen">true</item>
+      <!--<item name="android:windowFullscreen">true</item>
       <item name="android:windowContentOverlay">@null</item>
       <item name="windowNoTitle">true</item>
       <item name="windowActionBar">false</item>
-      <item name="android:actionBarSize">0dp</item>
+      <item name="android:actionBarSize">0dp</item>-->
     </style>
     <!--<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">#FFA710</item>
