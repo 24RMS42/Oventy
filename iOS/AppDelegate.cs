@@ -28,6 +28,7 @@ namespace oventy.iOS
             global::Xamarin.Forms.Forms.Init();
 
             App.DeviceType = ClientConstants.Platform_iOS;
+            app.StatusBarHidden = true;
 
             LoadApplication(new App());
 

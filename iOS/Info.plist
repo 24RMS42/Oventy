@@ -52,5 +52,9 @@
 	<string>Oventy use camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Oventy use location</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
