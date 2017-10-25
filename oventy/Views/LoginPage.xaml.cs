@@ -18,6 +18,24 @@ namespace oventy
             };
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (!string.IsNullOrWhiteSpace(Settings.Username) && !string.IsNullOrWhiteSpace(Settings.Password))
+            {
+                EmailEntry.Text = Settings.Username;
+                PasswordEntry.Text = Settings.Password;
+                await LoginAsync(Settings.Username, Settings.Password);
+            }
+            else
+            {
+                EmailEntry.Text = "";
+                PasswordEntry.Text = "";
+            }
+        }
+
+
         async void OnLoginButtonClicked(object sender, EventArgs args)
         {
             await LoginAsync(EmailEntry.Text, PasswordEntry.Text);
@@ -41,8 +59,21 @@ namespace oventy
                         webview.Eval(jsAccessTokenString);
                         webview.Eval(jsRefreshTokenString);
 
+                        Settings.Username = useremail;
+                        Settings.Password = userpassword;
+
                         await Navigation.PushAsync(new WebviewPage());
                     }
+                    else
+                    {
+                        Settings.Username = "";
+                        Settings.Password = "";
+                    }
+                }
+                else
+                {
+                    Settings.Username = "";
+                    Settings.Password = "";
                 }
             }
         }

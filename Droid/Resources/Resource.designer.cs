@@ -4092,9 +4092,6 @@ namespace oventy.Droid
 			// aapt resource value: 0x7f0b000d
 			public const int Animation_Design_BottomSheetDialog = 2131427341;
 			
-			// aapt resource value: 0x7f0b0187
-			public const int AppCompatDialogStyle = 2131427719;
-			
 			// aapt resource value: 0x7f0b00c9
 			public const int Base_AlertDialog_AppCompat = 2131427529;
 			

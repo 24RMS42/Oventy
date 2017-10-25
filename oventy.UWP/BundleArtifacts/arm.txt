@@ -1,6 +1,0 @@
-MainPackage=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\ARM\Release\oventy.UWP_1.1.2.0_ARM.appx
-SymbolPackage=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\AppPackages\oventy.UWP_1.1.2.0_Test\oventy.UWP_1.1.2.0_ARM.appxsym
-ResourcePack=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\ARM\Release\oventy.UWP_1.1.2.0_scale-100.appx
-ResourcePack=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\ARM\Release\oventy.UWP_1.1.2.0_scale-125.appx
-ResourcePack=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\ARM\Release\oventy.UWP_1.1.2.0_scale-150.appx
-ResourcePack=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\ARM\Release\oventy.UWP_1.1.2.0_scale-400.appx

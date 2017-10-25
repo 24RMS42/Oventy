@@ -18,13 +18,38 @@ namespace oventy
                 Webview.Eval(jsAccessTokenString);
                 Webview.Eval(jsRefreshTokenString);
             };
+
+            Webview.Navigating += Webview_Navigating;
         }
 
-        void Logout_Clicked(object sender, EventArgs e)
+        private void Webview_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            Navigation.PopAsync();
-            Settings.RemoveAccessToken();
-            Settings.RemoveRefreshToken();
+            if(e.Url.StartsWith("https://www.oventy.com/login"))
+            {
+                e.Cancel = true;
+
+                Settings.RemoveAccessToken();
+                Settings.RemoveRefreshToken();
+
+                Settings.RemoveUsername();
+                Settings.RemovePassword();
+
+                Navigation.PopAsync();
+            }
+
+            if (e.Url.StartsWith("mailto") || e.Url.StartsWith("https://www.facebook.com/sharer") || !e.Url.StartsWith("https://www.oventy.com/"))
+            {
+                e.Cancel = true;
+
+                Device.OpenUri(new Uri(e.Url));
+            }
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Webview.GoBack();
+            return true;
+        }
+
     }
 }

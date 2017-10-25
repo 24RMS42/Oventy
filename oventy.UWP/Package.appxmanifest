@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="OventyLtd.Oventy" Publisher="CN=A8535D88-4793-4C7D-A324-ED60AA7F8AF9" Version="1.1.2.0" />
+  <Identity Name="OventyLtd.Oventy" Publisher="CN=A8535D88-4793-4C7D-A324-ED60AA7F8AF9" Version="1.6.2.0" />
   <mp:PhoneIdentity PhoneProductId="cf38b282-a1d3-4017-b235-8d3c53fc32fe" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Oventy</DisplayName>

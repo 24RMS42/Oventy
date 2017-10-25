@@ -1,2 +1,0 @@
-MainPackage=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\x86\Release\Upload\oventy.UWP_1.1.2.0_x86.appx
-SymbolPackage=C:\Users\james\Source\Oventy\Oventy\oventy.UWP\bin\x86\Release\Upload\oventy.UWP_1.1.2.0\oventy.UWP_1.1.2.0_x86.appxsym
