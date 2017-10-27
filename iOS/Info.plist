@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>Oventy</string>
+	<string>oventy</string>
 	<key>CFBundleName</key>
 	<string>oventy</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.dev.oventy</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.6</string>
+	<string>1.11</string>
 	<key>CFBundleVersion</key>
-	<string>1.6</string>
+	<string>1.11</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
