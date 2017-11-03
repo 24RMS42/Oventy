@@ -3,14 +3,15 @@
     <Application.Resources>
 		<ResourceDictionary>
     		<x:Double x:Key="BaseFontSize">16</x:Double>
-    		<Color x:Key="LightBlueColor">#3277b4</Color>
+            <Color x:Key="LightBlueColor">#10aec4</Color>
             <Style x:Key="MainButtonStyle" TargetType="Button">
                 <Setter Property="FontSize" Value="{StaticResource BaseFontSize}" />
                 <Setter Property="HeightRequest">
                     <Setter.Value>
                         <OnPlatform x:TypeArguments="x:Double" 
                             Android="50" 
-                            iOS="35" />
+                            iOS="35"
+                            WinPhone="40"/>
                     </Setter.Value>
                 </Setter>
                 <Setter Property="WidthRequest" Value="50" />

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="oventy.WebviewPage">
-	<WebView VerticalOptions="FillAndExpand" x:Name="webview" Source = "https://www.oventy.com/" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="oventy.WebviewPage" Title="App">
+	<StackLayout Orientation="Vertical" Padding="0, 0, 0, 0">
+	    <WebView VerticalOptions="FillAndExpand" x:Name="Webview" Source = "https://www.oventy.com/" />
+	</StackLayout>
 </ContentPage>

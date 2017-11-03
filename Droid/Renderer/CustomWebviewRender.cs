@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System;
 using Android.Webkit;
 
-[assembly: ExportRenderer(typeof(CustomWebview), typeof(CustomWebviewRender))]
+[assembly: ExportRenderer(typeof(Xamarin.Forms.WebView), typeof(CustomWebviewRender))]
 namespace oventy.Droid
 {
     public class CustomWebviewRender : WebViewRenderer
@@ -38,6 +38,11 @@ namespace oventy.Droid
         private void SetupControlSettings()
         {
             Control.Settings.JavaScriptEnabled = true;
+            Control.Settings.DomStorageEnabled = true;
+            Control.Settings.SetGeolocationEnabled(true);
+            //Control.Settings.SetGeolocationDatabasePath(Control.Context.FilesDir.Path);
+
+            Control.SetWebChromeClient(new GeoWebChromeClient());
 
             // Handy Hint: PDF JS will show massive fonts unless the minimum font size is defined as 0. I found this doesn't affect anything else I came across.
             Control.Settings.MinimumFontSize = 0;
@@ -58,6 +63,15 @@ namespace oventy.Droid
             public void OnReceiveValue(Java.Lang.Object value)
             {
                 _callback?.Invoke(Convert.ToString(value));
+            }
+        }
+
+
+        public class GeoWebChromeClient : Android.Webkit.WebChromeClient
+        {
+            public override void OnGeolocationPermissionsShowPrompt(string origin, GeolocationPermissions.ICallback callback)
+            {
+                callback.Invoke(origin, true, false);
             }
         }
     }

@@ -10,12 +10,31 @@ namespace oventy
         public LoginPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
 
             webview.Navigated += (o, s) => {
                 Console.WriteLine("login webview loaded");
                 loginButton.IsEnabled = true;
             };
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (!string.IsNullOrWhiteSpace(Settings.Username) && !string.IsNullOrWhiteSpace(Settings.Password))
+            {
+                EmailEntry.Text = Settings.Username;
+                PasswordEntry.Text = Settings.Password;
+                await LoginAsync(Settings.Username, Settings.Password);
+            }
+            else
+            {
+                EmailEntry.Text = "";
+                PasswordEntry.Text = "";
+            }
+        }
+
 
         async void OnLoginButtonClicked(object sender, EventArgs args)
         {
@@ -27,17 +46,34 @@ namespace oventy
             if (CheckValidate())
             {
                 var httpHandler = new HttpHandler();
-                var result = await httpHandler.LoginAsync(useremail, userpassword);
+                var login_result = await httpHandler.LoginAsync(useremail, userpassword);
 
-                if (result)
+                if (login_result)
                 {
-                    var jsAccessTokenString = $"localStorage.setItem('ls.accessToken', '{Settings.AccessToken}')";
-                    var jsRefreshTokenString = $"localStorage.setItem('ls.refreshToken', '{Settings.RefreshToken}')";
+                    var register_device_result = await httpHandler.InstallDeviceAsync();
+                    if (register_device_result)
+                    {
+                        var jsAccessTokenString = $"localStorage.setItem('ls.accessToken', '{Settings.AccessToken}')";
+                        var jsRefreshTokenString = $"localStorage.setItem('ls.refreshToken', '{Settings.RefreshToken}')";
 
-                    webview.Eval(jsAccessTokenString);
-                    webview.Eval(jsRefreshTokenString);
+                        webview.Eval(jsAccessTokenString);
+                        webview.Eval(jsRefreshTokenString);
 
-                    await Navigation.PushAsync(new WebviewPage());
+                        Settings.Username = useremail;
+                        Settings.Password = userpassword;
+
+                        await Navigation.PushAsync(new WebviewPage());
+                    }
+                    else
+                    {
+                        Settings.Username = "";
+                        Settings.Password = "";
+                    }
+                }
+                else
+                {
+                    Settings.Username = "";
+                    Settings.Password = "";
                 }
             }
         }

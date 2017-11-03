@@ -1,13 +1,22 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace oventy
 {
     public partial class App : Application
     {
+        public static string DeviceType = "";
+
         public App()
         {
             InitializeComponent();
 
+            if (string.IsNullOrEmpty(Settings.InstallationId))
+            {
+                Settings.InstallationId = Guid.NewGuid().ToString();
+            }
+
+            Xamarin.Forms.PlatformConfiguration.AndroidSpecific.Application.SetWindowSoftInputModeAdjust(this, Xamarin.Forms.PlatformConfiguration.AndroidSpecific.WindowSoftInputModeAdjust.Resize);
             MainPage = new NavigationPage(new LoginPage());
         }
 

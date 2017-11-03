@@ -52,7 +52,8 @@ namespace GetStartedXamarinAndroid
 		protected override void OnRegistered(Context context, string registrationId)
 		{
 			Log.Verbose(MyBroadcastReceiver.TAG, "GCM Registered: " + registrationId);
-			RegistrationID = registrationId;
+            Settings.DeviceToken = registrationId;
+			/*RegistrationID = registrationId;
             _context = context;
 
 			//createNotification("PushHandlerService-GCM Registered...", "The device has been Registered!");
@@ -73,11 +74,12 @@ namespace GetStartedXamarinAndroid
 			try
 			{
 				var hubRegistration = Hub.Register(registrationId, tags.ToArray());
+                Settings.DeviceToken = registrationId;
 			}
 			catch (Exception ex)
 			{
 				Log.Error(MyBroadcastReceiver.TAG, ex.Message);
-			}
+			}*/
 		}
 
 		protected override void OnMessage(Context context, Intent intent)
@@ -93,15 +95,41 @@ namespace GetStartedXamarinAndroid
 			}
 
 			string messageText = intent.Extras.GetString("message");
-			if (!string.IsNullOrEmpty (messageText))
-			{
-				createNotification ("New hub message!", messageText);
-			}
-			else
-			{
-				createNotification ("Unknown message details", msg.ToString ());
-			}
-		}
+
+            //var intent = new Intent(context, typeof(MainActivity));
+            //intent.PutExtra(MainActivity.GoToAction, action);
+            intent.AddFlags(ActivityFlags.ClearTop | ActivityFlags.SingleTop);
+            var pushId = DateTime.Now.TimeOfDay.Milliseconds;
+            var pendingIntent = PendingIntent.GetActivity(context, pushId, intent, PendingIntentFlags.OneShot);
+
+            // Set custom push notification sound.
+            //var pathToPushSound = "android.resource://" + context.ApplicationContext.PackageName + "/raw/pushalert";
+            //var soundUri = Android.Net.Uri.Parse(pathToPushSound);
+
+            var notificationBuilder = new Android.App.Notification.Builder(context)
+                .SetDefaults(NotificationDefaults.All)
+                //.SetSmallIcon(Android.Resource.Drawable.SymDefAppIcon)
+                .SetSmallIcon(oventy.Droid.Resource.Drawable.icon)
+                .SetContentTitle("Oventy")
+                .SetContentText(messageText)
+                .SetAutoCancel(true)
+                .SetStyle(new Android.App.Notification.BigTextStyle().BigText(messageText))
+                .SetVibrate(new long[] { 100, 1000, 100 })
+                .SetLights(Android.Resource.Color.HoloBlueLight, 1, 1)
+                .SetContentIntent(pendingIntent);
+
+            var notificationManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
+            notificationManager.Notify(pushId, notificationBuilder.Build());
+
+            //if (!string.IsNullOrEmpty (messageText))
+            //{
+            //	createNotification ("New hub message!", messageText);
+            //}
+            //else
+            //{
+            //	createNotification ("Unknown message details", msg.ToString ());
+            //}
+        }
 
 
 		void createNotification(string title, string desc)
